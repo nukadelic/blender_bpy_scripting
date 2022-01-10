@@ -9,6 +9,7 @@
 * Separate selected "char" (#3)
 * Unfocus `M`
 * Loop "chars" and _recenter_ them (#4)
+* Set mesh name based on index (charcode upper case A = 65)
 * Focus `M` and delete it 
 
 ```py
@@ -40,7 +41,7 @@ for i in range(len(result)):
     
     recenter( _item )
     
-    _item.name = "M" + str( i )
+    _item.name = str( chr(i + 65 ) )
     
     
 M.select_set( True )
