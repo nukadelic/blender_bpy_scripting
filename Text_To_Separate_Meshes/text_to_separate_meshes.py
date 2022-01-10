@@ -104,7 +104,7 @@ for i in range(len(result)):
     
     recenter( _item )
     
-    _item.name = "M" + str( i )
+    _item.name = str( chr(i + 65 ) )
     
     
 M.select_set( True )
