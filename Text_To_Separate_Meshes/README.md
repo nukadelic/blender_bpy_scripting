@@ -1,3 +1,6 @@
+Font : https://www.dafont.com/targa.font , Licence : Public domain / GPL / OFL
+  
+
 ![IMG](https://github.com/nukadelic/blender_bpy_scripting/blob/main/Text_To_Separate_Meshes/img.png?raw=true)
 
 ### Execution
@@ -148,5 +151,3 @@ def recenter( _item ):
     
     _item.select_set(False)
 ```
-
-Font : https://www.dafont.com/targa.font , Licence : Public domain / GPL / OFL
