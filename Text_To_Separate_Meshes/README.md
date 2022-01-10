@@ -148,3 +148,5 @@ def recenter( _item ):
     
     _item.select_set(False)
 ```
+
+Font : https://www.dafont.com/targa.font , Licence : Public domain / GPL / OFL
