@@ -1,3 +1,5 @@
+![IMG](https://github.com/nukadelic/blender_bpy_scripting/blob/main/Text_To_Separate_Meshes/img.png?raw=true)
+
 ### 1. Extrude Text 
 
 * check if selection is a font 
