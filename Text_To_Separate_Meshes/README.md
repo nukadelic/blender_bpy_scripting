@@ -1,5 +1,55 @@
 ![IMG](https://github.com/nukadelic/blender_bpy_scripting/blob/main/Text_To_Separate_Meshes/img.png?raw=true)
 
+### Execution
+
+* store selected text in `M`
+* _Extrude Text_ (#1)
+* Focus `M`
+* while first vertex selection (#2) is possible - select "char"
+* Separate selected "char" (#3)
+* Unfocus `M`
+* Loop "chars" and _recenter_ them (#4)
+* Focus `M` and delete it 
+
+```py
+extrude_amount = 0.2
+
+M = bpy.context.active_object
+
+success = text_extrude( extrude_amount )
+
+# print( M.name , M.type , success )
+
+result = list()
+
+M.select_set( True )
+
+while selectVert0( M ):    
+    
+    bpy.ops.mesh.select_linked( delimit=set() )
+    
+    new_mesh = separate_selected()
+    
+    result.append( new_mesh )
+    
+
+M.select_set( False )
+    
+for i in range(len(result)):
+    _item = result[ i ]
+    
+    recenter( _item )
+    
+    _item.name = "M" + str( i )
+    
+    
+M.select_set( True )
+
+bpy.ops.object.mode_set(mode='OBJECT')
+
+bpy.data.objects.remove( M , do_unlink=True )
+```
+
 ### 1. Extrude Text 
 
 * check if selection is a font 
@@ -96,54 +146,4 @@ def recenter( _item ):
     bpy.ops.object.mode_set(mode='EDIT')
     
     _item.select_set(False)
-```
-
-### Execute
-
-* store selected text in `M`
-* _Extrude Text_ (#1)
-* Focus `M`
-* while first vertex selection (#2) is possible - select "char"
-* Separate selected "char" (#3)
-* Unfocus `M`
-* Loop "chars" and _recenter_ them (#4)
-* Focus `M` and delete it 
-
-```py
-extrude_amount = 0.2
-
-M = bpy.context.active_object
-
-success = text_extrude( extrude_amount )
-
-# print( M.name , M.type , success )
-
-result = list()
-
-M.select_set( True )
-
-while selectVert0( M ):    
-    
-    bpy.ops.mesh.select_linked( delimit=set() )
-    
-    new_mesh = separate_selected()
-    
-    result.append( new_mesh )
-    
-
-M.select_set( False )
-    
-for i in range(len(result)):
-    _item = result[ i ]
-    
-    recenter( _item )
-    
-    _item.name = "M" + str( i )
-    
-    
-M.select_set( True )
-
-bpy.ops.object.mode_set(mode='OBJECT')
-
-bpy.data.objects.remove( M , do_unlink=True )
 ```
